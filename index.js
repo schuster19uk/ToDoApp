@@ -49,7 +49,12 @@ db.run(sql_create, err => {
   // });
 });
 
-require('../ToDoApp/routes/routes.js')(app , db);
+
+var routespath = path.join(__dirname, "routes", "routes.js");
+
+require(routespath)(app , db);
+
+//require('../ToDoApp/routes/routes.js')(app , db);
 
 //Server Listen
 app.listen(3000, () => {
