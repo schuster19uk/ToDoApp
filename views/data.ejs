@@ -1,0 +1,58 @@
+<%- include("_header") -%>
+
+<h2>Tasks (<%= model.length %>)</h2>
+
+<form action="/data" method="get">
+
+  <div class="form-group row">
+    <label class="col-form-label col-sm-2" for="name">Date</label>
+    <div class="col-sm-8">
+      <input autofocus class="form-control" name="name" value="<%= search.date %>" />
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-form-label col-sm-2" for="completed">Completed</label>
+    <div class="col-sm-8">
+      <input type="checkbox" autofocus class="form-control" name="completed" value="<%= search.completed %>" />
+    </div>
+  </div>
+  
+  
+  <div class="form-group row">
+    <label class="col-form-label col-sm-2"></label>
+    <div class="col-sm-10">
+      <input type="submit" value="Search" class="btn btn-default btn-success" />
+    </div>
+  </div>
+  
+
+</form>
+
+
+<div class="table-responsive-sm">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>name</th>
+        <th>status</th>
+        <th>Creation Date</th>
+        <th>Completion Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% for (const book of model) { %>
+        <tr>
+          <td><%= book.unique_id %></td>
+          <td><%= book.name %></td>
+          <td><%= book.status %></td>
+          <td><%= book.created_at %></td>
+          <td><%= book.completed_at %></td>
+        </tr>
+      <% } %>
+    </tbody>
+  </table>
+</div>
+
+<%- include("_footer") -%>

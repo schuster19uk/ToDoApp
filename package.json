@@ -1,0 +1,23 @@
+{
+  "name": "todo",
+  "version": "1.0.0",
+  "description": "Application CRUD avec Express et SQlite en 10 étapes",
+  "main": "index.js",
+  "scripts": {
+    "debug": "node --inspect-brk index.js",
+    "start": "node index",
+    "test": "node --inspect-brk test.js "
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/schuster19uk/ToDoApp"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^2.7.1",
+    "express": "^4.17.1",
+    "sqlite3": "^4.1.0"
+  }
+}

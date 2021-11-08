@@ -1,0 +1,48 @@
+<%- include("_header") -%>
+
+<h1>Todo List (<%= model.length %>)</h1>
+
+<div>  
+
+  <a class="btn btn-sm btn-success" href="/create">Add Task</a> 
+</div>
+
+<div class="table-responsive-sm">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>name</th>
+        <th>status</th>
+        <th>Creation Date</th>
+        <th>Completion Date</th>
+        <th>Mark as Completed</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% for (const book of model) { %>
+        <form action ="/update/<%= book.unique_id %>" method="POST">        
+        <tr>
+          <td><%= book.unique_id %></td>
+          <td><%= book.name %></td>
+          <td><%= book.status %></td>
+          <td><%= book.created_at %></td>
+          <td><%= book.completed_at %></td>
+          <td class="d-print-none">
+            <input type="checkbox" onclick="this.form.submit()"/>
+          </td>
+          <td class="d-print-none">
+     
+            <button class="btn btn-sm btn-warning" formaction="delete/<%= book.unique_id %>" type="submit"> Remove </button>
+
+          </td>
+
+        </tr>
+      </form>
+      <% } %>
+    </tbody>
+  </table>
+</div>
+
+<%- include("_footer") -%>
