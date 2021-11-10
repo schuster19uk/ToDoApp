@@ -1,7 +1,7 @@
 {
   "name": "todo",
   "version": "1.0.0",
-  "description": "Application CRUD avec Express et SQlite en 10 étapes",
+  "description": "To Do App",
   "main": "index.js",
   "scripts": {
     "debug": "node --inspect-brk index.js",

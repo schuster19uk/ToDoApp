@@ -1,6 +1,6 @@
 const express = require("express");
 const path = require("path");
-const sqlite3 = require("sqlite3").verbose();
+
 
 const app = express();
 
@@ -11,7 +11,11 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
 
 
-// Database Connection
+//const sqlite3 = require("sqlite3").verbose();
+
+//var db= require(path.join(__dirname, "database", "db.js"));
+
+/* // Database Connection
 const db_name = path.join(__dirname, "data", "todo.db");
 const db = new sqlite3.Database(db_name, err => {
   if (err) {
@@ -19,18 +23,18 @@ const db = new sqlite3.Database(db_name, err => {
   }
   console.log("Connected to database 'todo.db'");
 });
+ */
 
-
-// Task Table creation (unique_id, name, created_at, completed_at status)
+/* // Task Table creation (unique_id, name, created_at, completed_at status)
 const sql_create = `CREATE TABLE IF NOT EXISTS Tasks (
   unique_id INTEGER PRIMARY KEY AUTOINCREMENT,
   name Text NOT NULL,
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
   completed_at DATETIME,
   status VARCHAR(100) NOT NULL DEFAULT 'Pending'
-);`;
+);`; */
 
-//insert temp data
+/* //insert temp data
 db.run(sql_create, err => {
   if (err) {
     return console.error(err.message);
@@ -48,11 +52,12 @@ db.run(sql_create, err => {
   //   console.log("Insert of temp data 'Tasks' table was successfull ");
   // });
 });
-
+ */
 
 var routespath = path.join(__dirname, "routes", "routes.js");
+var dbLocation = path.join(__dirname, "database", "db.js");
 
-require(routespath)(app , db);
+require(routespath)(app, dbLocation);
 
 //require('../ToDoApp/routes/routes.js')(app , db);
 

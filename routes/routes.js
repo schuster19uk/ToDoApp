@@ -1,7 +1,12 @@
-module.exports = function(app, db)
+
+
+
+module.exports = function(app,dbLocation)
 {
+var db= require(dbLocation);
 // GET /
 app.get("/", (req, res) => {
+  
     //res.render("index");
     const sql = "SELECT * FROM Tasks ORDER BY unique_id";
     db.all(sql, [], (err, rows) => {
@@ -10,7 +15,7 @@ app.get("/", (req, res) => {
       }
       res.render("Tasks", { model: rows });
     });
-  
+
   });
   
   // GET /Tasks
@@ -22,6 +27,7 @@ app.get("/", (req, res) => {
       }
       res.render("Tasks", { model: rows });
     });
+
   });
   
   // GET /create
@@ -40,6 +46,7 @@ app.get("/", (req, res) => {
       }
       res.redirect("/Tasks");
     });
+
   });
   
   
@@ -54,6 +61,7 @@ app.get("/", (req, res) => {
       }
       res.redirect("/Tasks");
     });
+
   }); 
   
   // GET /delete/5 (used to test delete)
@@ -66,6 +74,8 @@ app.get("/", (req, res) => {
       }
       res.render("delete", { model: row });
     });
+
+    db.close();
   });
   
   // POST /delete/5
