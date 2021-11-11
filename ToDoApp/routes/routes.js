@@ -1,9 +1,12 @@
 
 
 
-module.exports = function(app,dbLocation)
+
+module.exports = function(app , dbLocation)
 {
-var db= require(dbLocation);
+var db = require(dbLocation);
+
+
 // GET /
 app.get("/", (req, res) => {
   
@@ -13,6 +16,7 @@ app.get("/", (req, res) => {
       if (err) {
         return console.error(err.message);
       }
+      console.log(rows);
       res.render("Tasks", { model: rows });
     });
 

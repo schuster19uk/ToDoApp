@@ -1,15 +1,17 @@
 const express = require("express");
 const path = require("path");
 
-
+const bodyParser = require('body-parser');
 const app = express();
+const port = 3000;
 
 // Express Configuration
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.static(path.join(__dirname, "public")));
-app.use(express.urlencoded({ extended: true }));
 
+app.use(express.urlencoded({ extended: true }));
+//app.use(bodyParser.json());
 
 //const sqlite3 = require("sqlite3").verbose();
 
@@ -62,6 +64,8 @@ require(routespath)(app, dbLocation);
 //require('../ToDoApp/routes/routes.js')(app , db);
 
 //Server Listen
-app.listen(3000, () => {
-    console.log("Server Listening on: (http://localhost:3000/) !");
+app.listen(port, () => {
+    //console.log("Server Listening on: (http://localhost:3000/) !");
 });
+
+module.exports = {app }
